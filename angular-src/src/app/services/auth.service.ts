@@ -33,8 +33,7 @@ export class AuthService {
     return this.http.get('http://localhost:3000/users/profile', {headers: headers});
   }
 
-  storeUserData(token, user){
-
+  storeUserData(token, user){ //change to save in cookie
     localStorage.setItem('id_token',token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token; 

@@ -11,20 +11,22 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { ValidateService } from './services/validate.service';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
 import { AuthService } from './services/auth.service';
 import { VideoListComponent } from './components/video-list/video-list.component';
+import { VideoDetailComponent } from './components/video-detail/video-detail.component';
 
 const appRoutes: Routes = [
-  {path:'', component: HomeComponent},
-  { path: 'videos', component: VideoListComponent},
-  {path:'register', component: RegisterComponent},
-  {path:'login', component: LoginComponent},
-  {path:'dashboard', component: DashboardComponent},
-  {path:'profile', component: ProfileComponent}
-]
+  // {path:'', component: HomeComponent},
+  { path: '', component: VideoListComponent },
+  { path: 'videos', component: VideoListComponent, redirectTo: '', pathMatch: 'full' },
+  { path: 'videos/:id', component: VideoDetailComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'profile', component: ProfileComponent }
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,7 @@ const appRoutes: Routes = [
     DashboardComponent,
     ProfileComponent,
     VideoListComponent,
+    VideoDetailComponent,
 
   ],
   imports: [
@@ -45,7 +48,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     NgFlashMessagesModule.forRoot()
   ],
-  exports:[],
+  exports: [],
   providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]
 })

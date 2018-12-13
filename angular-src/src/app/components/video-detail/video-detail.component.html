@@ -1,0 +1,32 @@
+<table *ngIf="video">
+  <tr>
+    <td>Title</td><td>{{video.title}}</td>
+  </tr>
+  <tr>
+    <td>Running Time</td><td>{{video.runtime}}</td>
+  </tr>
+  <tr>
+    <td>Genre</td><td>{{video.genre}}</td>
+  </tr>
+  <tr>
+    <td>Rating</td><td>{{video.rating}}</td>
+  </tr>
+  <tr>
+    <td>Director</td><td>{{video.director}}</td>
+  </tr>
+  <tr>
+    <td>Customer</td>
+    <td>
+      <select name="customer">
+          <option *ngFor="let user of users" value="customer.id">
+            {{user.firstName}} {{user.lastName}}</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td><button routerLink="/videos">Cancel</button></td>
+    <td><button (click)="reserve()" routerLink="/videos">Reserve</button>
+  </tr>
+</table>
+
+<div *ngIf="!video">Loading...</div>

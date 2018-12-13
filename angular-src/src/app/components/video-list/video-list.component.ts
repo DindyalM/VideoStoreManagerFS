@@ -62,5 +62,4 @@ export class VideoListComponent implements OnInit {
   ngOnInit() {
     this.admin = true;
   }
-
 }

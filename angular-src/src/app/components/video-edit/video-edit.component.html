@@ -1,0 +1,43 @@
+<div class="container">
+    <form *ngIf="videoForm" [formGroup]="videoForm" (ngSubmit)="submitForm(videoForm)">
+      <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" formControlName="title" />
+      </div>
+      <div class="form-group">
+          <label for="runtime">Runtime</label>
+          <input type="text" class="form-control" id="runtime" formControlName="runtime" />
+      </div>
+      <div class="form-group">
+          <label for="genre">Genre</label>
+          <select class="form-control" id="genre" formControlName="genre">
+            <option
+              *ngFor="let genre of genres"
+              [value]="genre">
+              {{genre}}
+            </option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <select class="form-control" id="rating" formControlName="rating">
+          <option *ngFor="let i of ratings" [value]="i">{{i}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label for="director">Director</label>
+          <input type="text" class="form-control" id="director" formControlName="director" />
+      </div>
+      <div class="form-group">
+          <label for="available">Status</label>
+          <select class="form-control" id="available" formControlName="available">
+            <option *ngFor="let stat of status" [value]="stat === 'Available'">{{stat}}</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-danger" routerLink="/videos">Cancel</button>
+        <button class="btn btn-primary float-right" type="submit" [disabled]="videoForm.invalid">Update</button>
+      </div>
+    </form>
+    <div *ngIf="!videoForm">Loading...</div>
+  </div>

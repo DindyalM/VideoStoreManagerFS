@@ -1,12 +1,14 @@
+<button class="btn btn-primary" (click)="this.admin = !this.admin">{{admin ? "Log Out" : "Log In"}}</button> <!-- TODO: change (click) to routerLink for login component-->
+
 <div class="searchbar">
     <div class="input-group mb-3 search">
-      <input type="text" class="form-control" placeholder="Search Videos">
+      <input [(ngModel)]="searchTerm" (input)="search()" type="text" class="form-control" placeholder="Search Videos">
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Clear</button>
+        <button (click)="clearSearch()" class="btn btn-outline-secondary" type="button" id="button-addon2">Clear</button>
       </div>
     </div>
 
-    <button class="btn btn-success float-right" routerLink="/add">Add Video</button>
+    <button *ngIf="admin" class="btn btn-success float-right" routerLink="/videos/add">Add Video</button>
 </div>
 
 
@@ -28,11 +30,11 @@
       <td>{{video.rating}}</td>
       <td>{{video.director}}</td>
       <td>
-        <div *ngIf="!admin && video.available"><button class="btn btn-secondary" routerLink="/details/{{video.id}}">Reserve</button></div>
+        <div *ngIf="!admin && video.available"><button class="btn btn-secondary" routerLink="/videos/{{video.id}}">Reserve</button></div>
         <div *ngIf="admin">{{video.available ? "Available" : "Reserved"}}</div>
       </td>
-      <td *ngIf="admin"><button class="btn btn-secondary">Edit</button></td>
-      <td *ngIf="admin"><button class="btn btn-danger">Delete</button></td>
+      <td *ngIf="admin"><button class="btn btn-secondary" routerLink="/videos/edit/{{video.id}}">Edit</button></td>
+      <td *ngIf="admin"><button class="btn btn-danger" (click)="delete(video.id)">Delete</button></td>
     </tr>
   </table>
 

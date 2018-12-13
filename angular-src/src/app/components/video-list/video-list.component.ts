@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Video } from '../../video';
+import { VideoService } from '../../services/video.service';
 
 @Component({
   selector: 'app-video-list',
@@ -7,6 +8,8 @@ import { Video } from '../../video';
   styleUrls: ['./video-list.component.css']
 })
 export class VideoListComponent implements OnInit {
+  searchTerm = '';
+
   admin: boolean;
 
   videos: Video[] = [
@@ -57,9 +60,35 @@ export class VideoListComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private videoService: VideoService) { }
 
   ngOnInit() {
+    // this.getVideos();
     this.admin = true;
+  }
+
+  getVideos(): void {
+    this.videoService.getVideos()
+      .subscribe(videos => this.videos = videos);
+  }
+
+  delete(id: number): void {
+    this.videos = this.videos.filter(video => video.id !== id);
+    this.videoService.deleteVideo(id)
+      .subscribe();
+  }
+
+  search(): void {
+    if (!this.searchTerm.trim()) {
+      this.getVideos();
+    } else {
+      this.videoService.searchVideos(this.searchTerm)
+        .subscribe(videos => this.videos = videos);
+    }
+  }
+
+  clearSearch(): void {
+    this.searchTerm = '';
+    this.getVideos();
   }
 }

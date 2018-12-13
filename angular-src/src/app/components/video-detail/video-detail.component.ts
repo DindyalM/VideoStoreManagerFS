@@ -18,8 +18,6 @@ export class VideoDetailComponent implements OnInit {
   video: Video;
   users: User[] = USERS;
 
-  public itemId: number;
-
   constructor(
     private route: ActivatedRoute,
     private videoService: VideoService,
@@ -28,6 +26,7 @@ export class VideoDetailComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getVideo();
+
     // remove this and use service once it's working
     this.video = {
       id: 1,

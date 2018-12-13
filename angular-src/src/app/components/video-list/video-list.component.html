@@ -1,0 +1,39 @@
+<div class="searchbar">
+    <div class="input-group mb-3 search">
+      <input type="text" class="form-control" placeholder="Search Videos">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Clear</button>
+      </div>
+    </div>
+
+    <button class="btn btn-success float-right" routerLink="/add">Add Video</button>
+</div>
+
+
+<table class="table" *ngIf="videos">
+    <tr>
+        <th>Movie</th>
+        <th>Duration</th>
+        <th>Genre</th>
+        <th>Rating</th>
+        <th>Director</th>
+        <th>Available</th>
+        <th *ngIf="admin">Edit</th>
+        <th *ngIf="admin">Delete</th>
+    </tr>
+    <tr *ngFor="let video of videos">
+      <td>{{video.title}}</td>
+      <td>{{video.runtime}} mins</td>
+      <td>{{video.genre}}</td>
+      <td>{{video.rating}}</td>
+      <td>{{video.director}}</td>
+      <td>
+        <div *ngIf="!admin && video.available"><button class="btn btn-secondary" routerLink="/details/{{video.id}}">Reserve</button></div>
+        <div *ngIf="admin">{{video.available ? "Available" : "Reserved"}}</div>
+      </td>
+      <td *ngIf="admin"><button class="btn btn-secondary">Edit</button></td>
+      <td *ngIf="admin"><button class="btn btn-danger">Delete</button></td>
+    </tr>
+  </table>
+
+  <div *ngIf="!videos">Loading videos...</div>

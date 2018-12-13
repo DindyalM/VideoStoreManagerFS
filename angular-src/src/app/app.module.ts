@@ -15,9 +15,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ValidateService } from './services/validate.service';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
 import { AuthService } from './services/auth.service';
+import { VideoListComponent } from './components/video-list/video-list.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
+  { path: 'videos', component: VideoListComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent},
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-   
+    VideoListComponent,
+
   ],
   imports: [
     BrowserModule,

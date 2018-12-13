@@ -5,12 +5,12 @@ import { HttpClient , HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class VideoServiceService {
-  apikey: String = "'http://localhost:3000";
+  apikey: String = 'http://localhost:3000';
   constructor(private http:HttpClient) {}
 
  
   //CREATE: 
-  addVideo(video){
+  addVid(video){
     let headers = new HttpHeaders();
     headers.append('Content-Type','application/json');
     return this.http.post(this.apikey+'/videos/add', video , {headers: headers})

@@ -1,0 +1,30 @@
+<form (submit)="addVideo()">
+  <div class="form-group">
+    <label>title</label>
+    <input type='text' class="form-control" [(ngModel)]="title" name="title">
+  </div>
+  <div class="form-group">
+    <label>runtime</label>
+    <input type='text' class="form-control" [(ngModel)]="runtime" name="runtime">
+  </div>
+  <div class="form-group">
+    <label>genre</label>
+    <input type='text' class="form-control" [(ngModel)]="genre" name="genre">
+  </div>
+  <div class="form-group">
+    <label>trating</label>
+    <input type='text' class="form-control" [(ngModel)]="rating" name="rating">
+  </div>
+  <div class="form-group">
+    <label>director</label>
+    <input type='text' class="form-control" [(ngModel)]="director" name="director">
+  </div>
+  <div class="form-group">
+    <label>avaliable</label>
+    <input type='text' class="form-control" [(ngModel)]="avaliable" name="avaliable">
+  </div>
+  <div>
+    <input type='submit' class="btn btn-primary"  placeholder= "Submit">
+  </div>
+</form>
+

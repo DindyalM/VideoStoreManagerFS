@@ -11,17 +11,18 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { ValidateService } from './services/validate.service';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
 import { AuthService } from './services/auth.service';
+import { TestComponent } from './components/test/test.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent},
-  {path:'profile', component: ProfileComponent}
+  {path:'profile', component: ProfileComponent},
+  {path: 'test', component:TestComponent}
 ]
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
+    TestComponent,
    
   ],
   imports: [

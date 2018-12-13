@@ -46,6 +46,7 @@ router.post('/reserve/:videoId', (req, res) => {
 
 // Add 
 router.post('/add', (req, res) => {
+    console.log(req.body.video);
     const video = new VideoModel(req.body.video);
 
     video.save(err => {

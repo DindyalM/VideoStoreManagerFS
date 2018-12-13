@@ -1,0 +1,36 @@
+<table *ngIf="user">
+    <tr>
+      <td>First Name</td><td>{{user.firstName}}</td>
+    </tr>
+    <tr>
+      <td>Last Name</td><td>{{user.lastName}}</td>
+    </tr>
+    <tr>
+      <td>Address</td><td>{{user.address}}</td>
+    </tr>
+    <tr>
+      <td>City</td><td>{{user.city}}</td>
+    </tr>
+    <tr>
+      <td>Phone</td><td>{{user.phone}}</td>
+    </tr>
+    <tr>
+      <td>Status</td>
+      <td>
+        <select name="active">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+          <button routerLink="/users">Update</button>
+      </td>
+      <td>
+          <button routerLink="/users">Cancel</button>
+      </td>
+    </tr>
+  </table>
+
+  <div *ngIf="!user">Loading...</div>

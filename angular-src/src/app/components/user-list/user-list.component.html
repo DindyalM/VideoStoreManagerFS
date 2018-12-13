@@ -1,0 +1,34 @@
+<div class="searchbar">
+    <div class="input-group mb-3 search">
+      <input type="text" class="form-control" placeholder="Search Users">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Clear</button>
+      </div>
+    </div>
+</div>
+
+<table class="table" *ngIf="users">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Phone</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    <tr *ngFor="let user of users">
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}} mins</td>
+      <td>{{user.address}}</td>
+      <td>{{user.city}}</td>
+      <td>{{user.phone}}</td>
+      <td>{{user.active}}</td>
+      <td><button class="btn btn-secondary" routerLink="/edit/{{user.id}}">Edit</button></td>
+      <td><button class="btn btn-danger">Delete</button></td>
+    </tr>
+  </table>
+
+  <div *ngIf="!users">Loading users...</div>

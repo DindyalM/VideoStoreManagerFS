@@ -17,14 +17,18 @@ import { AuthService } from './services/auth.service';
 import { VideoListComponent } from './components/video-list/video-list.component';
 import { VideoDetailComponent } from './components/video-detail/video-detail.component';
 import { VideoEditComponent } from './components/video-edit/video-edit.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 const appRoutes: Routes = [
   // {path:'', component: HomeComponent},
   { path: '', component: VideoListComponent },
   { path: 'videos', component: VideoListComponent, redirectTo: '', pathMatch: 'full' },
-  { path: 'videos/:id', component: VideoDetailComponent },
   { path: 'videos/edit/:id', component: VideoEditComponent },
   { path: 'videos/add', component: VideoEditComponent },
+  { path: 'videos/:id', component: VideoDetailComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'users/:id', component: UserDetailComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -42,7 +46,8 @@ const appRoutes: Routes = [
     VideoListComponent,
     VideoDetailComponent,
     VideoEditComponent,
-
+    UserListComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

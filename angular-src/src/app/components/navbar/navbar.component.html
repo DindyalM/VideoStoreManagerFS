@@ -9,11 +9,14 @@
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
           <a [routerLink]="['/']" class="nav-link" href="#">Home</a>
         </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+        <li *ngIf="!user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
             <a [routerLink]="['/login']" class="nav-link" href="#">Login</a>
         </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
-            <a [routerLink]="['/register']"  class="nav-link" href="#">Register</a>
+        <li *ngIf="user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+            <a [routerLink]="['/profile']" class="nav-link" href="#">Admin</a>
+        </li>
+        <li *ngIf="!user" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}" class="nav-item">
+            <a [routerLink]="['/register']"  class="nav-link" href="#">Register Admin</a>
         </li>
         <li>
             <a (click)="onLogoutClick()" href= '#'  class="nav-link" href="#">Logout</a>

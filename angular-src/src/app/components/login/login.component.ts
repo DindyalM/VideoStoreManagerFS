@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           // Type of flash message, it defaults to info and success, warning, danger types can also be used
           type: 'success'
         });
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['/']);
       }else{
         this.ngFlashMessageService.showFlashMessage({
           // Array of messages each will be displayed in new line

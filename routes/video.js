@@ -58,7 +58,7 @@ router.post('/add', (req, res) => {
 });
 
 // Update
-router.put('/edit/:videoId', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.put('/edit/:videoId', (req, res) => {
     const videoId = req.params.videoId;
 
     const video = req.body.video;
@@ -72,7 +72,7 @@ router.put('/edit/:videoId', passport.authenticate('jwt', {session: false}), (re
     });
 });
 
-router.delete('/:videoId', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.delete('/:videoId',  (req, res) => {
     const videoId = req.params.videoId;
 
     VideoModel.findOneAndDelete({ _id: videoId}, (err, _) => {

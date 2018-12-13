@@ -9,13 +9,25 @@ import { NgFlashMessageService } from 'ng-flash-messages';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  user: boolean;
 
   constructor(  private authService: AuthService,
     private router:Router,
     private ngFlashMessageService: NgFlashMessageService) { }
 
   ngOnInit() {
+    //check user
+    this.authService.getProfile().subscribe(profile => {
+
+      this.user = true;
+      },
+
+      err => {
+        console.log("err");
+        return false;
+      });
   }
+
   onLogoutClick(){
     this.authService.logout();
     this.ngFlashMessageService.showFlashMessage({

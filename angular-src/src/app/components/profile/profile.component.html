@@ -5,4 +5,7 @@
     <li class="list-group-item">Email: {{user.email}}</li>
   </ul>
 </div>
-<h1>{{user.name}}</h1>
+<div *ngIf ="!user">
+  <h1>not logged in </h1>
+</div>
+

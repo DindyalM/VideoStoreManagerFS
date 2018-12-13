@@ -9,15 +9,18 @@ require('./config/passport')(passport);
 
 
 // Connect To Database
-mongoose.Promise = require('bluebird');
-mongoose.connect(config.database, { useMongoClient: true, promiseLibrary: require('bluebird') })
-  .then(() => console.log(`Connected to database ${config.database}`))
-  .catch((err) => console.log(`Database error: ${err}`));
+// mongoose.Promise = require('bluebird');
+// mongoose.connect(config.database, { useMongoClient: true, promiseLibrary: require('bluebird') })
+//   .then(() => console.log(`Connected to database ${config.database}`))
+//   .catch((err) => console.log(`Database error: ${err}`));
+
+mongoose.connect(config.dbUrl);
 
 const app = express();
 
 const users = require('./routes/users');
-const admin = require('./routes/admin');
+// const admin = require('./routes/admin');
+const videos = require('./routes/video');
 
 // Port Number
 const port = 3000;
@@ -33,11 +36,12 @@ app.use(bodyParser.json());
 
 // Passport Middleware
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 
 app.use('/users', users);
-app.use('./admin', admin);
+// app.use('/admin', admin);
+app.use('/videos', videos);
 
 // Index Routes
 app.get('/', (req, res) => {

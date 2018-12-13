@@ -15,8 +15,6 @@ router.post('admin',(req, res, next)=>{
         username: req.body.username,
         password: req.body.password
       });
-    
-    
 });
 
-
+// module.exports = 
